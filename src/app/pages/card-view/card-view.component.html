@@ -1,4 +1,5 @@
 <div class="main-container">
+  <button type="button" class="btn btn-warning" (click)="goToRegisterCard()">Criar novo card</button>
   <ul *ngFor="let i of cardList" class="card-list">
     <li>{{i.name}}</li>
     <li>{{i.gitHubUrl}}</li>
@@ -8,5 +9,4 @@
       <qrcode qrdata="{{i.linkedlnUrl}}"></qrcode>
     </li>
   </ul>
-
 </div>
