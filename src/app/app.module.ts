@@ -1,26 +1,44 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CardViewComponent } from './pages/card-view/card-view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
-import { CardService } from './pages/card-view/card.service';
 import { QRCodeModule } from 'angularx-qrcode';
+import { MaterialModule } from './shared/material.module';
+import { APP_CONFIG } from 'src/assets/config/app.config';
+import { RouterModule } from '@angular/router';
+import { CardViewComponent } from './pages/card-view/card-view.component';
+import { CardService } from './pages/services/card.service';
+import { CardRegisterComponent } from './pages/card-register/card-register.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CardViewComponent
+    CardViewComponent,
+    CardRegisterComponent
   ],
   imports: [
     CommonModule,
+    RouterModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
     HttpClientModule,
+    MaterialModule,
     BrowserModule,
     QRCodeModule,
-    AppRoutingModule
   ],
-  providers: [CardService],
+  providers: [
+    {
+      provide: APP_CONFIG,
+      useValue: provideClientHydration()
+    },
+    CardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

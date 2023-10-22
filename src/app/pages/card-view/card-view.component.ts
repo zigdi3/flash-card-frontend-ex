@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CardService } from './card.service';
+import { CardService } from '../services/card.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-view',
@@ -8,7 +9,8 @@ import { CardService } from './card.service';
 })
 export class CardViewComponent implements OnInit {
   public cardList: any[] = [];
-  constructor(private cardService: CardService) { }
+  constructor(private cardService: CardService,
+    private route: Router) { }
 
   ngOnInit() {
 
@@ -19,5 +21,9 @@ export class CardViewComponent implements OnInit {
     }
     );
   }
+  goToRegisterCard() {
+    this.route.navigate(['card-register']);
+  }
+
 
 }
