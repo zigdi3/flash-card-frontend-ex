@@ -1,8 +1,9 @@
-<div class="main-container">
-  <button type="button" class="btn btn-warning" (click)="goToRegisterCard()">Criar novo card</button>
+<div class="main-container h-100">
+  <button type="button" class="btn btn-warning col-12" (click)="goToRegisterCard()">Criar novo card</button>
   <ul *ngFor="let i of cardList" class="card-list">
     <li>{{i.name}}</li>
-    <li>{{i.gitHubUrl}}</li>
+    <li><a href='"{{i.gitHubUrl}}"'>{{i.gitHubUrl}} </a>
+    </li>
     <li>{{i.linkedlnUrl}}</li>
     <li><br></li>
     <li class="center-line">
