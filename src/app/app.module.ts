@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
 import { QRCodeModule } from 'angularx-qrcode';
 import { MaterialModule } from './shared/material.module';
@@ -14,11 +13,14 @@ import { RouterModule } from '@angular/router';
 import { CardViewComponent } from './pages/card-view/card-view.component';
 import { CardService } from './pages/services/card.service';
 import { CardRegisterComponent } from './pages/card-register/card-register.component';
+import { AudioBgComponent } from './pages/audio-bg/audio-bg.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     CardViewComponent,
-    CardRegisterComponent
+    CardRegisterComponent,
+    AudioBgComponent,
   ],
   imports: [
     CommonModule,
@@ -35,10 +37,10 @@ import { CardRegisterComponent } from './pages/card-register/card-register.compo
   providers: [
     {
       provide: APP_CONFIG,
-      useValue: provideClientHydration()
+      useValue: provideClientHydration(),
     },
-    CardService
+    CardService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
