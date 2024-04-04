@@ -2,8 +2,7 @@
   list-style-type: none;
   border: solid #629;
   flex-direction: row;
-  // display: flex;
-  }
+}
 
 .main-container{
   padding: 5px 30px  0 20px;
@@ -24,8 +23,7 @@
 img {
   top: 0;
   left: 0;
-    height: 100vw;
-  // z-index: -2;
+  height: 100vw;
 }
 
 .qr-container {
@@ -36,3 +34,4 @@ img {
     height: auto;
   }
 }
+
