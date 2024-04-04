@@ -14,11 +14,15 @@ import { RouterModule } from '@angular/router';
 import { CardViewComponent } from './pages/card-view/card-view.component';
 import { CardService } from './pages/services/card.service';
 import { CardRegisterComponent } from './pages/card-register/card-register.component';
+import { AudioBgComponent } from './pages/audio-bg/audio-bg.component';
+import { AudioBgService } from './pages/audio-bg/audio-bg.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     CardViewComponent,
-    CardRegisterComponent
+    CardRegisterComponent,
+    AudioBgComponent,
   ],
   imports: [
     CommonModule,
@@ -35,10 +39,11 @@ import { CardRegisterComponent } from './pages/card-register/card-register.compo
   providers: [
     {
       provide: APP_CONFIG,
-      useValue: provideClientHydration()
+      useValue: provideClientHydration(),
     },
-    CardService
+    CardService,
+    AudioBgService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
