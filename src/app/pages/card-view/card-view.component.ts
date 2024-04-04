@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ThemeService } from 'src/app/core/theme-service/theme.service';
 import { CardService } from '../services/card.service';
 
 @Component({
