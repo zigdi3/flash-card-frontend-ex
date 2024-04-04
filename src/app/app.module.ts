@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
 import { QRCodeModule } from 'angularx-qrcode';
 import { MaterialModule } from './shared/material.module';
@@ -15,7 +14,6 @@ import { CardViewComponent } from './pages/card-view/card-view.component';
 import { CardService } from './pages/services/card.service';
 import { CardRegisterComponent } from './pages/card-register/card-register.component';
 import { AudioBgComponent } from './pages/audio-bg/audio-bg.component';
-import { AudioBgService } from './pages/audio-bg/audio-bg.service';
 
 @NgModule({
   declarations: [
