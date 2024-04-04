@@ -42,7 +42,6 @@ import { AudioBgService } from './pages/audio-bg/audio-bg.service';
       useValue: provideClientHydration(),
     },
     CardService,
-    AudioBgService,
   ],
   bootstrap: [AppComponent],
 })
