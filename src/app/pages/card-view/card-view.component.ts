@@ -12,9 +12,9 @@ export class CardViewComponent implements OnInit {
   public cardList: any[] = [];
   constructor(
     private cardService: CardService,
-    private route: Router,
-    private themeService: ThemeService
-  ) {
+    private route: Router
+  ) // private themeService: ThemeService
+  {
     // this.themeService.themeChange.subscribe({
     //   next: (theme: string) => {
     //     console.log("listen themes from app...");
