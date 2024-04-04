@@ -1,6 +1,7 @@
 .card-list{
   list-style-type: none;
   border: solid #629;
+  flex-direction: row;
   }
 
 .main-container{
@@ -15,3 +16,14 @@
   text-align: center;
 }
 
+.main {
+  position: fixed;
+}
+
+img {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: auto;
+  // z-index: -2;
+}
