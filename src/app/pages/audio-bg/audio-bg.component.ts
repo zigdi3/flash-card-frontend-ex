@@ -6,18 +6,20 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./audio-bg.component.css'],
 })
 export class AudioBgComponent implements OnInit {
-  @Input() audioPath = '../../../assets/audio1.mp3';
-  isAudioEnabled = true;
+  @Input() audioPath = '../../../assets/audio.mp3';
+  volume = 0;
   @ViewChild('audioPlayer') audioPlayer!: ElementRef;
-
-  audioSwitch(val: boolean): string {
-    let res = val ? 'on' : 'off';
-    return res;
+  @ViewChild('mute') btn!: ElementRef;
+  audioSwitch() {
+    this.volume = this.audioPlayer.nativeElement.volume;
+this.audioPlayer.nativeElement.volume = 0;
   }
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.audioPlayer.nativeElement.volume = 0.5;
+  }
 
   increaseVolume() {
     if (this.audioPlayer.nativeElement.volume < 1) {

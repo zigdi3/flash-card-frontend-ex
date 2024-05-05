@@ -23,7 +23,8 @@
 img {
   top: 0;
   left: 0;
-  height: 100vw;
+  width: 100vw;
+    display: flex;
 }
 
 .qr-container {

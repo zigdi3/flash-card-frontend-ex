@@ -1,6 +1,9 @@
-<audio #audioPlayer controls autoplay loop>
+<div class="d-none">
+  <audio #audioPlayer controls autoplay loop>
   <source [src]=audioPath type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
-
-
+</div>
+<button (click)="decreaseVolume()">Decrease Volume</button>
+<button (click)="increaseVolume()">Increase Volume</button>
+<button (click)="audioSwitch()"> Mute</button>
