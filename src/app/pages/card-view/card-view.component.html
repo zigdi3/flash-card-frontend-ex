@@ -1,13 +1,19 @@
+
 <div class="main">
+
   <img
-    src="https://duet-cdn.vox-cdn.com/thumbor/0x0:3840x2160/1200x800/filters:focal(2707x363:2708x364):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/22150409/Cyberpunk2077_No_Future_RGB.jpg"
-    height="100%" alt="cyber">
+  src="https://duet-cdn.vox-cdn.com/thumbor/0x0:3840x2160/1200x800/filters:focal(2707x363:2708x364):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/22150409/Cyberpunk2077_No_Future_RGB.jpg"
+  height="100%" alt="cyber">
 </div>
 <div class="main-container h-100 position-relative">
   <button type="button" class="btn btn-warning col-12" (click)="goToRegisterCard()">Criar novo card</button>
-  <ul *ngFor="let i of cardList" class="card-list">
-<li>Nome: {{i.name}}</li>
-<li>Perfil GitHub: <a href='"{{i.gitHubUrl}}"'>{{i.gitHubUrl}} </a>
+  <div *ngIf="isLoading; else view" class="spinner-border text-danger flex align-self-center " role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <ng-template #view>
+    <ul *ngFor="let i of cardList" class="card-list">
+      <li>Nome: {{i.name}}</li>
+      <li>Perfil GitHub: <a href='"{{i.gitHubUrl}}"'>{{i.gitHubUrl}} </a>
     </li>
     <li>Linkedln : {{i.linkedlnUrl}}</li>
     <li><br></li>
@@ -16,4 +22,5 @@
       <qrcode class="qr-container" qrdata="{{i.linkedlnUrl}}" [allowEmptyString]="true"></qrcode>
     </li>
   </ul>
+</ng-template>
 </div>

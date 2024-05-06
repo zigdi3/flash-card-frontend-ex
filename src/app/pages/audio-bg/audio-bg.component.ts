@@ -9,16 +9,14 @@ export class AudioBgComponent implements OnInit {
   @Input() audioPath = '../../../assets/audio.mp3';
   volume = 0;
   @ViewChild('audioPlayer') audioPlayer!: ElementRef;
-  @ViewChild('mute') btn!: ElementRef;
-  audioSwitch() {
-    this.volume = this.audioPlayer.nativeElement.volume;
-this.audioPlayer.nativeElement.volume = 0;
-  }
 
   constructor() {}
 
-  ngOnInit() {
-    this.audioPlayer.nativeElement.volume = 0.5;
+  ngOnInit() {}
+
+  audioSwitch() {
+    this.volume = this.audioPlayer.nativeElement.volume;
+    this.audioPlayer.nativeElement.volume = 0;
   }
 
   increaseVolume() {
