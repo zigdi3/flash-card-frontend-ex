@@ -16,7 +16,7 @@ export class CardViewComponent implements OnInit {
     private cardService: CardService,
     private route: Router
   ) // private themeService: ThemeService
-  ) {
+  {
     // this.themeService.themeChange.subscribe({
     //   next: (theme: string) => {
     //     console.log("listen themes from app...");
@@ -36,7 +36,8 @@ export class CardViewComponent implements OnInit {
         error: () => console.log('Erro ao listar cards');
       });
   }
-  goToRegisterCard() {
+
+  goToRegisterCard(): void {
     this.route.navigate(['card-register']);
   }
 }
