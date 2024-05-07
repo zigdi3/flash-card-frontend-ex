@@ -6,12 +6,12 @@
   height="100%" alt="cyber">
 </div>
 <div class="main-container h-100 position-relative">
-  <button type="button" class="btn bg-info col-12" (click)="goToRegisterCard()">Criar novo card</button>
+  <button type="button" class="btn bg-info col-6" (click)="goToRegisterCard()">Criar novo card</button>
   <div *ngIf="isLoading; else view" class="spinner-border text-danger flex align-self-center " role="status">
     <span class="sr-only">Loading...</span>
   </div>
   <ng-template #view>
-    <ul *ngFor="let i of cardList" class="card-list">
+    <ul *ngFor="let i of cardList" class="card-list col-6 ">
       <li>Nome: {{i.name}}</li>
       <li>Perfil GitHub: <a href='"{{i.gitHubUrl}}"'>{{i.gitHubUrl}} </a>
     </li>
