@@ -1,9 +1,12 @@
-<div class="">
-  <audio #audioPlayer controls autoplay loop>
+<!-- <div class="d-none">
+  <audio #audioPlayer controls>
   <source [src]=audioPath type="audio/mp3">
   Your browser does not support the audio element.
 </audio>
-</div>
+</div> -->
 <button class="rounded-sm" (click)="decreaseVolume()">Decrease Volume</button>
 <button class="rounded-sm" (click)="increaseVolume()">Increase Volume</button>
 <button class="rounded-sm" (click)="audioSwitch()"> Mute</button>
+
+<youtube-player #YTPlayer [playerVars]="playerConfig" (ready)="onReady($event)" [width]=30 [height]=40
+  videoId="8Y7nTYGKlBA" placeholderImageQuality="low"></youtube-player>

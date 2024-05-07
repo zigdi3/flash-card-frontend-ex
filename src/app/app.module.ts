@@ -14,7 +14,7 @@ import { CardViewComponent } from './pages/card-view/card-view.component';
 import { CardService } from './pages/services/card.service';
 import { CardRegisterComponent } from './pages/card-register/card-register.component';
 import { AudioBgComponent } from './pages/audio-bg/audio-bg.component';
-
+import { YouTubePlayerModule } from '@angular/youtube-player';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +33,7 @@ import { AudioBgComponent } from './pages/audio-bg/audio-bg.component';
     MaterialModule,
     BrowserModule,
     QRCodeModule,
+    YouTubePlayerModule,
   ],
   providers: [
     {
