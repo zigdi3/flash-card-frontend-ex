@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CardService } from '../services/card.service';
 import { debounceTime } from 'rxjs';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-card-view',
@@ -14,9 +15,9 @@ export class CardViewComponent implements OnInit {
 
   constructor(
     private cardService: CardService,
-    private route: Router
-  ) // private themeService: ThemeService
-  {
+    private route: Router,
+    private sanitizer: DomSanitizer // private themeService: ThemeService
+  ) {
     // this.themeService.themeChange.subscribe({
     //   next: (theme: string) => {
     //     console.log("listen themes from app...");
@@ -39,5 +40,9 @@ export class CardViewComponent implements OnInit {
 
   goToRegisterCard(): void {
     this.route.navigate(['card-register']);
+  }
+
+  cleanURL(oldURL: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(oldURL);
   }
 }

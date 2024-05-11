@@ -13,9 +13,11 @@
   <ng-template #view>
     <ul *ngFor="let i of cardList" class="card-list col-6 ">
       <li>Nome: {{i.name}}</li>
-      <li>Perfil GitHub: <a href='"{{i.gitHubUrl}}"'>{{i.gitHubUrl}} </a>
+      <li>Perfil GitHub: <a [href]="cleanURL(i.gitHubUrl)">{{i.gitHubUrl}} </a>
     </li>
-    <li>Linkedln : {{i.linkedlnUrl}}</li>
+    <li>Linkedln : <a [href]="cleanURL(i.linkedlnUrl)"> {{i.linkedlnUrl}}
+      </a>
+    </li>
     <li><br></li>
     <label class="text-center">Aponte sua camera aqui:</label>
     <li class="center-line">
