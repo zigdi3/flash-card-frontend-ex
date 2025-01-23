@@ -1,0 +1,10 @@
+<div>
+  <!-- <h2>Audio Player</h2> -->
+  <button class="rounded-sm" (click)="playAudio()">Play</button>
+  <button class="rounded-sm" (click)="pauseAudio()">Pause</button>
+  <button class="rounded-sm" (click)="stopAudio()">Stop</button>
+  <div>
+    <label for="volume">Volume:</label>
+    <input id="volume" type="range" min="0" max="1" step="0.1" [value]="volume" (input)="setVolume($event)" />
+    <span>{{ (volume * 100) | number: '1.0-0' }}%</span>
+  </div>
