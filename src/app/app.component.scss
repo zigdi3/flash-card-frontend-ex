@@ -1,5 +1,24 @@
 .audio-container {
-  top: 20px;
+  position: sticky;
+    inset: 0px;
+    z-index: 1000;
   display: flex;
-    background: rgba(0, 0, 130, 0.5);
+  background: rgba(0, 0, 130, 0.5);
+}
+
+.text-running {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  animation: moveText 12s linear infinite;
+}
+
+@keyframes moveText {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-75%);
+  }
 }
