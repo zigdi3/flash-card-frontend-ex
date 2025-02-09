@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'flash-card-frontend';
+
+  coffee() {
+    window.location.href = 'https://ko-fi.com/kakarotto70';
+  }
 }
