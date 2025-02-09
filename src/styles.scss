@@ -1,8 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
+html,
+body {
   background-color: #000;
   color: #fff;
   height: 100%;
   margin: 0;
   font-family: 'Fira Code', sans-serif;
-  }
+}
+
+.overflow-wrap_any {
+  overflow-wrap: anywhere
+}
+
+a:hover {
+  color: orangered
+}
+a:visited {
+  color: darkcyan
+}

@@ -2,20 +2,20 @@
 <div class="main">
 
   <img
-  src="https://duet-cdn.vox-cdn.com/thumbor/0x0:3840x2160/1200x800/filters:focal(2707x363:2708x364):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/22150409/Cyberpunk2077_No_Future_RGB.jpg"
+  src="../../../assets/shot.jpg"
   height="100%" alt="cyber">
 </div>
 <div class="main-container h-100 position-relative">
-  <button type="button" class="btn bg-info col-6" (click)="goToRegisterCard()">Criar novo card</button>
+  <button type="button" class="btn bg-info col-md-6" (click)="goToRegisterCard()">Criar novo card</button>
   <div *ngIf="isLoading() === true; else view" class="spinner-border text-danger flex align-self-center " role="status">
     <span class="sr-only">Loading...</span>
   </div>
   <ng-template #view>
-    <ul *ngFor="let i of cardList()" class="card-list col-6 ">
+    <ul *ngFor="let i of cardList()" class="card-list col-md-6">
       <li>Nome: {{i.name}}</li>
-      <li>Perfil GitHub: <a [href]="cleanURL(i.gitHubUrl)">{{i.gitHubUrl}} </a>
+      <li>Perfil GitHub: <a class="overflow-wrap_any" [href]="cleanURL(i.gitHubUrl)">{{i.gitHubUrl}} </a>
     </li>
-    <li>Linkedln : <a [href]="cleanURL(i.linkedlnUrl)"> {{i.linkedlnUrl}}
+    <li>Linkedln : <a class="overflow-wrap_any" [href]="cleanURL(i.linkedlnUrl)"> {{i.linkedlnUrl}}
       </a>
     </li>
     <li><br></li>
