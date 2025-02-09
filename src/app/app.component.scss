@@ -13,6 +13,10 @@
   animation: moveText 12s linear infinite;
 }
 
+.text-styled:hover {
+  color: gold;
+  cursor: pointer;
+}
 @keyframes moveText {
   0% {
     transform: translateX(100%);
