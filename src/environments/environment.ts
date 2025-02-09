@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: "https://flash-card-api.onrender.com"
-
+  apiURL: 'https://localhost:3131/api',
 };
 
 /*
