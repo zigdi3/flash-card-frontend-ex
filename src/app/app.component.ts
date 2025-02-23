@@ -9,6 +9,6 @@ export class AppComponent {
   title = 'flash-card-frontend';
 
   coffee() {
-    window.location.href = 'https://ko-fi.com/kakarotto70';
+    window.open('https://ko-fi.com/kakarotto70', '_blank');
   }
 }

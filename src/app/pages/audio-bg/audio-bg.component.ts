@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  inject,
   Input,
   OnInit,
   ViewChild,
