@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -19,34 +19,28 @@ import { CardRegisterComponent } from './pages/card-register/card-register.compo
 import { CardViewComponent } from './pages/card-view/card-view.component';
 import { CardService } from './pages/services/card.service';
 import { MaterialModule } from './shared/material.module';
-@NgModule({
-  declarations: [
-    AppComponent,
-    CardViewComponent,
-    CardRegisterComponent,
-    AudioBgComponent,
-    AudioFileComponent,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    MaterialModule,
-    BrowserModule,
-    QRCodeModule,
-    YouTubePlayerModule,
-  ],
-  providers: [
-    {
-      provide: APP_CONFIG,
-      useValue: provideClientHydration(),
-    },
-    CardService,
-  ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        CardViewComponent,
+        CardRegisterComponent,
+        AudioBgComponent,
+        AudioFileComponent,
+    ],
+    bootstrap: [AppComponent], imports: [CommonModule,
+        RouterModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        MaterialModule,
+        BrowserModule,
+        QRCodeModule,
+        YouTubePlayerModule], providers: [
+        {
+            provide: APP_CONFIG,
+            useValue: provideClientHydration(),
+        },
+        CardService,
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}

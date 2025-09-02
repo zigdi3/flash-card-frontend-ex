@@ -4,6 +4,7 @@
     "target": "ES2022",
     "module": "esnext",
     "moduleResolution": "Node",
+    "esModuleInterop": true,
     "lib": [
       "ES2022",
       "DOM"
