@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { AudioFileService } from './audio-file.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-audio-file',
   templateUrl: './audio-file.component.html',
+  standalone: true,
+  imports:[CommonModule],
   styleUrls: ['./audio-file.component.scss'],
 })
 export class AudioFileComponent {

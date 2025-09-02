@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { CardService } from '../services/card.service';
 import { CardProfile } from './model/card-profile.model';
+import { MaterialModule } from '@app/features/shared/material.module';
 
 @Component({
   selector: 'app-card-register',
   templateUrl: './card-register.component.html',
+  standalone: true,
   styleUrls: ['./card-register.component.scss'],
+  imports: [MaterialModule, ReactiveFormsModule],
 })
 export class CardRegisterComponent implements OnInit {
   cardRegisterForm: FormGroup = new FormGroup({});

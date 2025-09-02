@@ -4,9 +4,13 @@ import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs';
 import { CardProfile } from '../card-register/model/card-profile.model';
 import { CardService } from '../services/card.service';
+import { QRCodeModule } from 'angularx-qrcode';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-card-view',
+  standalone: true,
+  imports:[QRCodeModule, CommonModule],
   templateUrl: './card-view.component.html',
   styleUrls: ['./card-view.component.scss'],
 })

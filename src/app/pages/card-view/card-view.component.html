@@ -1,28 +1,45 @@
-
 <div class="main">
-
-  <img
-  src="../../../assets/shot.jpg"
-  height="100%" alt="cyber">
+  <img src="../../../assets/shot.jpg" height="100%" alt="cyber" />
 </div>
 <div class="main-container h-100 position-relative">
-  <button type="button" class="btn bg-info col-md-6" (click)="goToRegisterCard()">Criar novo card</button>
-  <div *ngIf="isLoading() === true; else view" class="spinner-border text-danger flex align-self-center " role="status">
+  <button
+    type="button"
+    class="btn bg-info col-md-6"
+    (click)="goToRegisterCard()"
+  >
+    Criar novo card
+  </button>
+  <div
+    *ngIf="isLoading() === true; else view"
+    class="spinner-border text-danger flex align-self-center"
+    role="status"
+  >
     <span class="sr-only">Loading...</span>
   </div>
   <ng-template #view>
     <ul *ngFor="let i of cardList()" class="card-list col-md-6">
-      <li>Nome: {{i.name}}</li>
-      <li>Perfil GitHub: <a class="overflow-wrap_any" [href]="cleanURL(i.gitHubUrl)">{{i.gitHubUrl}} </a>
-    </li>
-    <li>Linkedln : <a class="overflow-wrap_any" [href]="cleanURL(i.linkedlnUrl)"> {{i.linkedlnUrl}}
-      </a>
-    </li>
-    <li><br></li>
-    <label class="text-center">Aponte sua camera aqui:</label>
-    <li class="center-line">
-      <qrcode class="qr-container" qrdata="{{i.linkedlnUrl}}" [allowEmptyString]="true"></qrcode>
-    </li>
-  </ul>
-</ng-template>
+      <li>Nome: {{ i.name }}</li>
+      <li>
+        Perfil GitHub:
+        <a class="overflow-wrap_any" [href]="cleanURL(i.gitHubUrl)"
+          >{{ i.gitHubUrl }}
+        </a>
+      </li>
+      <li>
+        Linkedln :
+        <a class="overflow-wrap_any" [href]="cleanURL(i.linkedlnUrl)">
+          {{ i.linkedlnUrl }}
+        </a>
+      </li>
+      <li><br /></li>
+      <label class="text-center">Aponte sua camera aqui:</label>
+      <li class="center-line">
+        <qrcode
+          class="qr-container"
+          qrdata="{{ i.linkedlnUrl }}"
+          [allowEmptyString]="true"
+        ></qrcode>
+      </li>
+    </ul>
+  </ng-template>
 </div>

@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:flash-card-frontend": "node dist/flash-card-frontend/server/server.mjs"
+    "serve:ssr:flash-card-frontend": "node dist/flash-card-frontend-ex/browser/server/server.mjs"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +24,7 @@
     "@angular/router": "^18.2.13",
     "@angular/ssr": "^18.2.20",
     "@angular/youtube-player": "^17.1.2",
-    "angularx-qrcode": "^17.0.1",
+    "angularx-qrcode": "^18.0.2",
     "bootstrap": "^5.3.3",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",

@@ -1,3 +1,2 @@
-import { AppServerModule } from './app/app.server.module';
-
-export { AppServerModule };
+import { AppComponent } from "@app/app.component";
+export default AppComponent;
