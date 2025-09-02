@@ -44,9 +44,7 @@ export class CardViewComponent {
   }
 
   private setupEffects() {
-    effect(() => {
-      this.loadCards();
-    });
+    effect(() => this.loadCards());
   }
 
   goToRegisterCard(): void {
