@@ -1,27 +1,38 @@
-# FlashCardFrontend
+# 🃏 Flash Card Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
+[![Angular](https://img.shields.io/badge/Angular-17-red?logo=angular)](https://angular.io)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue?logo=typescript)](https://typescriptejs.org)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple?logo=bootstrap)](https://getbootstrap.com)
+[![Material](https://img.shields.io/badge/Angular%20Material-16-blue?logo=angular)](https://material.angular.io)
 
-## Development server
+> 📚 Interactive flashcard application built with Angular for enhanced learning experience
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Tech Stack
 
-## Code scaffolding
+- **Framework:** Angular 17 with SSR support
+- **UI Components:** Angular Material + Bootstrap 5
+- **Features:** QR Code generation, YouTube integration
+- **Styling:** SCSS with Material Design themes
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🏃‍♂️ Quick Start
 
-## Build
+```bash
+# Install dependencies
+npm install
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Start development server
+npm start
 
-## Running unit tests
+# Navigate to http://localhost:4200
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 📋 Available Scripts
 
-## Running end-to-end tests
+- `npm start` - Development server
+- `npm run build` - Production build  
+- `npm test` - Run unit tests
+- `npm run build:ssr` - Build with SSR
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 📄 License
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+MIT
