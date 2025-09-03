@@ -31,12 +31,12 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noEmitOnError": true,
     "resolveJsonModule": true,
     "importHelpers": true,
-    "declarationMap": true,
+    "downlevelIteration": true,
     "outDir": "./dist"
   },
   "include": [
