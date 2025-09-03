@@ -1,37 +1,18 @@
-<div class="card-register space-y-4 p-6 bg-white rounded-lg shadow-md">
-  <form
-    [formGroup]="cardRegisterForm"
-    (ngSubmit)="saveCard()"
-    class="space-y-4"
-  >
+<section class="card-register mx-auto w-max space-y-4 p-6 bg-white rounded-lg shadow-md">
+  <h2 class="text-center mx-auto my-1">Create Card</h2>
+  <form [formGroup]="cardRegisterForm" (ngSubmit)="saveCard()" class="space-y-4 w-105">
     <z-form-field label="Name">
-      <input
-        z-input
-        type="text"
-        formControlName="nameControl"
-        class="w-full"
-        placeholder="Digite seu nome"
-      />
+      <input z-input type="text" formControlName="nameControl" class="w-full" placeholder="Digite seu nome" />
     </z-form-field>
 
     <z-form-field label="GitHub Link">
-      <input
-        z-input
-        type="url"
-        formControlName="githubControl"
-        class="w-full"
-        placeholder="https://github.com/usuario"
-      />
+      <input z-input type="url" formControlName="githubControl" class="w-full"
+        placeholder="https://github.com/usuario" />
     </z-form-field>
 
     <z-form-field label="LinkedIn Link">
-      <input
-        z-input
-        type="url"
-        formControlName="linkedinControl"
-        class="w-full"
-        placeholder="https://linkedin.com/in/usuario"
-      />
+      <input z-input type="url" formControlName="linkedinControl" class="w-full"
+        placeholder="https://linkedin.com/in/usuario" />
     </z-form-field>
 
     <z-button type="submit" variant="primary" class="w-full"> Salvar </z-button>
@@ -42,4 +23,4 @@
       Ver cards..
     </z-button>
   </div>
-</div>
+</section>
