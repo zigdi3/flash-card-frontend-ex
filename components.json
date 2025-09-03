@@ -1,7 +1,7 @@
 {
   "style": "css",
   "tailwind": {
-    "css": "src/styles.scss",
+    "css": "src/styles.css",
     "baseColor": "slate",
     "cssVariables": true
   },

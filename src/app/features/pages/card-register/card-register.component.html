@@ -4,7 +4,6 @@
     (ngSubmit)="saveCard()"
     class="space-y-4"
   >
-    <!-- Name input -->
     <z-form-field label="Name">
       <input
         z-input
@@ -15,7 +14,6 @@
       />
     </z-form-field>
 
-    <!-- GitHub input -->
     <z-form-field label="GitHub Link">
       <input
         z-input
@@ -26,7 +24,6 @@
       />
     </z-form-field>
 
-    <!-- LinkedIn input -->
     <z-form-field label="LinkedIn Link">
       <input
         z-input
@@ -37,11 +34,9 @@
       />
     </z-form-field>
 
-    <!-- Salvar Button -->
     <z-button type="submit" variant="primary" class="w-full"> Salvar </z-button>
   </form>
 
-  <!-- Ver Cards Button -->
   <div class="pt-3">
     <z-button type="button" variant="warning" (click)="goToViewCard()">
       Ver cards..

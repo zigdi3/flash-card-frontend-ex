@@ -1,28 +1,29 @@
 import { Component, effect, signal } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs';
 import { CardProfile } from '../card-register/model/card-profile.model';
 import { CardService } from '../../../core/services/card.service';
-import { QRCodeModule } from 'angularx-qrcode';
 import { CommonModule } from '@angular/common';
+import { QrCodeComponent } from 'ng-qrcode';
+import { ZardButtonComponent } from '@app/shared/components/button/button.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-view',
   standalone: true,
-  imports: [QRCodeModule, CommonModule],
+  imports: [QrCodeComponent, CommonModule, ZardButtonComponent],
   templateUrl: './card-view.component.html',
-  styleUrls: ['./card-view.component.scss'],
 })
 export class CardViewComponent {
   public cardList = signal<CardProfile[]>([]);
-  public isLoading = signal(true);
+  public isLoading = signal(false);
 
   constructor(
     private cardService: CardService,
     private route: Router,
-    private sanitizer: DomSanitizer // private themeService: ThemeService
-  ) {
+    private sanitizer: DomSanitizer
+  ) // private themeService: ThemeService
+  {
     // this.themeService.themeChange.subscribe({
     //   next: (theme: string) => {
     //     console.log("listen themes from app...");
@@ -41,9 +42,9 @@ export class CardViewComponent {
         } else {
           console.error('Expected an array but got:', cards);
         }
-        this.isLoading.set(false);
       },
       error: () => console.log('Erro ao listar cards'),
+      complete: () => this.isLoading.set(false),
     });
   }
 

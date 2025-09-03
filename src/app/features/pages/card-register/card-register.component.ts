@@ -12,8 +12,12 @@ import { ZardButtonComponent } from '@app/shared/components/button/button.compon
   selector: 'app-card-register',
   standalone: true,
   templateUrl: './card-register.component.html',
-  styleUrls: ['./card-register.component.scss'],
-  imports: [ZardFormFieldComponent, ZardInputDirective, ZardButtonComponent, ReactiveFormsModule],
+  imports: [
+    ZardFormFieldComponent,
+    ZardInputDirective,
+    ZardButtonComponent,
+    ReactiveFormsModule,
+  ],
 })
 export class CardRegisterComponent implements OnInit {
   cardRegisterForm: FormGroup = new FormGroup({});

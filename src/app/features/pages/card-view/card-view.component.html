@@ -1,45 +1,66 @@
-<div class="main">
-  <img src="assets/shot.jpg" height="100%" alt="cyber" />
-</div>
-<div class="main-container h-100 position-relative">
-  <button
-    type="button"
-    class="btn bg-info col-md-6"
-    (click)="goToRegisterCard()"
-  >
-    Criar novo card
-  </button>
-  <div
-    *ngIf="isLoading() === true; else view"
-    class="spinner-border text-danger flex align-self-center"
-    role="status"
-  >
-    <span class="sr-only">Loading...</span>
+<main class="w-full min-h-screen bg-gray-100 flex flex-col items-center relative">
+
+  <figure class="fixed inset-0 z-0 ">
+    <img
+      src="assets/shot.jpg"
+      loading="eager"
+      alt="cyber"
+      class="w-full h-screen object-cover"
+    />
+  </figure>
+
+  <div class="mb-6 w-full max-w-2xl flex justify-center mx-auto py-3 relative z-10">
+    <z-button variant="primary" class="w-1/2" (click)="goToRegisterCard()">
+      Criar novo card
+    </z-button>
   </div>
-  <ng-template #view>
-    <ul *ngFor="let i of cardList()" class="card-list col-md-6">
-      <li>Nome: {{ i.name }}</li>
-      <li>
-        Perfil GitHub:
-        <a class="overflow-wrap_any" [href]="cleanURL(i.gitHubUrl)"
-          >{{ i.gitHubUrl }}
+
+  @if(isLoading()){
+  <div class="flex justify-center items-center my-3 relative mx-auto z-20">
+    <div
+      class="spinner-border text-danger"
+      role="status"
+    >
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  }
+
+  <section class="w-full max-w-2xl grid gap-6 relative mx-auto z-10">
+    @for (i of cardList(); track $index){
+    <article class="bg-white rounded-lg shadow-md p-6 flex flex-col gap-3">
+      <h2 class="text-xl font-bold text-gray-800 text-center">{{ i.name }}</h2>
+
+      <p class="text-center">
+        GitHub:
+        <a
+          class="text-blue-600 underline break-words"
+          [href]="cleanURL(i.gitHubUrl)"
+          target="_blank"
+          rel="noopener"
+        >
+          {{ i.gitHubUrl }}
         </a>
-      </li>
-      <li>
-        Linkedln :
-        <a class="overflow-wrap_any" [href]="cleanURL(i.linkedlnUrl)">
+      </p>
+
+      <p class="text-center">
+        LinkedIn:
+        <a
+          class="text-blue-600 underline break-words"
+          [href]="cleanURL(i.linkedlnUrl)"
+          target="_blank"
+          rel="noopener"
+        >
           {{ i.linkedlnUrl }}
         </a>
-      </li>
-      <li><br /></li>
-      <label class="text-center">Aponte sua camera aqui:</label>
-      <li class="center-line">
-        <qrcode
-          class="qr-container"
-          qrdata="{{ i.linkedlnUrl }}"
-          [allowEmptyString]="true"
-        ></qrcode>
-      </li>
-    </ul>
-  </ng-template>
-</div>
+      </p>
+
+      <div class="flex flex-col items-center mt-4">
+        <label class="text-gray-700 mb-2">Aponte sua câmera aqui:</label>
+        <qr-code class="w-40 h-40" [value]="i.linkedlnUrl"></qr-code>
+      </div>
+    </article>
+    }
+  </section>
+
+</main>
