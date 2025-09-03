@@ -1,29 +1,50 @@
+<div class="card-register space-y-4 p-6 bg-white rounded-lg shadow-md">
+  <form
+    [formGroup]="cardRegisterForm"
+    (ngSubmit)="saveCard()"
+    class="space-y-4"
+  >
+    <!-- Name input -->
+    <z-form-field label="Name">
+      <input
+        z-input
+        type="text"
+        formControlName="nameControl"
+        class="w-full"
+        placeholder="Digite seu nome"
+      />
+    </z-form-field>
 
-<div class="card-register">
+    <!-- GitHub input -->
+    <z-form-field label="GitHub Link">
+      <input
+        z-input
+        type="url"
+        formControlName="githubControl"
+        class="w-full"
+        placeholder="https://github.com/usuario"
+      />
+    </z-form-field>
 
-  <form  [formGroup]="cardRegisterForm" (submit)="saveCard()">
+    <!-- LinkedIn input -->
+    <z-form-field label="LinkedIn Link">
+      <input
+        z-input
+        type="url"
+        formControlName="linkedinControl"
+        class="w-full"
+        placeholder="https://linkedin.com/in/usuario"
+      />
+    </z-form-field>
 
-    <div>
-      <mat-form-field>
-        <mat-label>name</mat-label>
-        <input matInput formControlName="nameControl">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <mat-label>github link</mat-label>
-        <input matInput formControlName="githubControl">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <mat-label>linkedin link</mat-label>
-        <input matInput formControlName="linkedinControl">
-      </mat-form-field>
-    </div>
-    <button type="button" class="btn btn-primary" (click)="saveCard()">Salvar</button>
+    <!-- Salvar Button -->
+    <z-button type="submit" variant="primary" class="w-full"> Salvar </z-button>
   </form>
+
+  <!-- Ver Cards Button -->
   <div class="pt-3">
-    <button type="button" class="btn btn-warning" (click)="goToViewCard()">Ver cards..</button>
+    <z-button type="button" variant="warning" (click)="goToViewCard()">
+      Ver cards..
+    </z-button>
   </div>
 </div>

@@ -4,14 +4,16 @@ import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { CardService } from '@app/core/services/card.service';
 import { CardProfile } from './model/card-profile.model';
-import { MaterialModule } from '@app/features/shared/material.module';
+import { ZardFormFieldComponent } from '@app/shared/components/form/form.component';
+import { ZardInputDirective } from '@app/shared/components/input/input.directive';
+import { ZardButtonComponent } from '@app/shared/components/button/button.component';
 
 @Component({
   selector: 'app-card-register',
-  templateUrl: './card-register.component.html',
   standalone: true,
+  templateUrl: './card-register.component.html',
   styleUrls: ['./card-register.component.scss'],
-  imports: [MaterialModule, ReactiveFormsModule],
+  imports: [ZardFormFieldComponent, ZardInputDirective, ZardButtonComponent, ReactiveFormsModule],
 })
 export class CardRegisterComponent implements OnInit {
   cardRegisterForm: FormGroup = new FormGroup({});

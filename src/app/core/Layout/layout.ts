@@ -3,8 +3,8 @@ import { AudioFileComponent } from '@app/core/Layout/components/audio-file/audio
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  standalone: true,
   selector: 'app-layout',
+  standalone: true,
   imports: [AudioFileComponent, RouterOutlet],
   templateUrl: './layout.html',
   styles: [

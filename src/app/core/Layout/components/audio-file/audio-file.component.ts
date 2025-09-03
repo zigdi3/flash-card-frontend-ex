@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-audio-file',
-  templateUrl: './audio-file.component.html',
   standalone: true,
+  templateUrl: './audio-file.component.html',
   imports: [CommonModule],
   styleUrls: ['./audio-file.component.scss'],
 })

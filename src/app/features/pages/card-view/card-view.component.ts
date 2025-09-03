@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-card-view',
   standalone: true,
-  imports:[QRCodeModule, CommonModule],
+  imports: [QRCodeModule, CommonModule],
   templateUrl: './card-view.component.html',
   styleUrls: ['./card-view.component.scss'],
 })

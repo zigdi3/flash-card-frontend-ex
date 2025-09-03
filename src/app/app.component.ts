@@ -3,8 +3,8 @@ import { Layout } from './core/Layout/layout';
 
 @Component({
   selector: 'app-root',
-  template: `<app-layout />`,
   standalone: true,
+  template: `<app-layout />`,
   imports: [Layout],
 })
 export class AppComponent {}
