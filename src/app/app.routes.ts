@@ -1,15 +1,26 @@
 import { Routes } from '@angular/router';
-import { CardRegisterComponent } from './pages/card-register/card-register.component';
-import { CardViewComponent } from './pages/card-view/card-view.component';
 
-export const routes: Routes = [
+const routes: Routes = [
   { path: '', redirectTo: 'card-view', pathMatch: 'full' },
   {
     path: 'card-register',
-    component: CardRegisterComponent,
+    pathMatch: 'full',
+    loadComponent: async () => {
+      return import(
+        './features/pages/card-register/card-register.component'
+      ).then((m) => m.CardRegisterComponent);
+    },
   },
   {
     path: 'card-view',
-    component: CardViewComponent,
+    title: 'view-card',
+    pathMatch: 'full',
+    loadComponent: async () => {
+      return import('./features/pages/card-view/card-view.component').then(
+        (m) => m.CardViewComponent
+      );
+    },
   },
 ];
+
+export default routes;

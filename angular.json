@@ -45,7 +45,7 @@
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
-              "entry": "server.ts"
+              "entry": "src/server.ts"
             }
           },
           "configurations": {
@@ -89,9 +89,16 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/flash-card-frontend-ex/server",
+            "outputPath": "dist/app/server",
             "main": "src/main.server.ts",
             "tsConfig": "tsconfig.server.json"
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "app:build",
+            "serverTarget": "app:server"
           }
         },
         "serve": {

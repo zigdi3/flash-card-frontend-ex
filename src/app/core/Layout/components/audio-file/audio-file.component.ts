@@ -6,11 +6,11 @@ import { CommonModule } from '@angular/common';
   selector: 'app-audio-file',
   templateUrl: './audio-file.component.html',
   standalone: true,
-  imports:[CommonModule],
+  imports: [CommonModule],
   styleUrls: ['./audio-file.component.scss'],
 })
 export class AudioFileComponent {
-  private audioFilePath = '../../../assets/audio.mp3';
+  private audioFilePath = 'assets/audio.mp3';
   volume: number = 1.0;
   autoStart: boolean = true;
   // audioService: AudioFileService;
