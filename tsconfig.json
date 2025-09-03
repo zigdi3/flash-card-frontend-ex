@@ -36,7 +36,6 @@
     "noEmitOnError": true,
     "resolveJsonModule": true,
     "importHelpers": true,
-    "downlevelIteration": true,
     "outDir": "./dist"
   },
   "include": [
