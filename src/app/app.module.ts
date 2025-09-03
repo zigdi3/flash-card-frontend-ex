@@ -8,23 +8,23 @@ import {
 } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { YouTubePlayerModule } from '@angular/youtube-player';
 import { QRCodeModule } from 'angularx-qrcode';
 import { APP_CONFIG } from 'src/assets/config/app.config';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AudioBgComponent } from './pages/audio-bg/audio-bg.component';
 import { AudioFileComponent } from './pages/audio-file/audio-file.component';
 import { CardRegisterComponent } from './pages/card-register/card-register.component';
 import { CardViewComponent } from './pages/card-view/card-view.component';
 import { CardService } from './pages/services/card.service';
 import { MaterialModule } from './shared/material.module';
+import { SnowComponent } from './snow/snow.component';
+import { SnowService } from './snow/snow.service';
 @NgModule({
   declarations: [
     AppComponent,
     CardViewComponent,
     CardRegisterComponent,
-    AudioBgComponent,
+    SnowComponent,
     AudioFileComponent,
   ],
   imports: [
@@ -38,7 +38,6 @@ import { MaterialModule } from './shared/material.module';
     MaterialModule,
     BrowserModule,
     QRCodeModule,
-    YouTubePlayerModule,
   ],
   providers: [
     {
@@ -46,6 +45,7 @@ import { MaterialModule } from './shared/material.module';
       useValue: provideClientHydration(),
     },
     CardService,
+    SnowService,
   ],
   bootstrap: [AppComponent],
 })
