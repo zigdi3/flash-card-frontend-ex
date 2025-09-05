@@ -1,40 +1,58 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { AudioFileService } from './audio-file.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-audio-file',
-  standalone: true,
+  imports: [],
   templateUrl: './audio-file.component.html',
-  imports: [CommonModule],
-  styleUrls: ['./audio-file.component.scss'],
 })
-export class AudioFileComponent {
-  private audioFilePath = 'assets/audio.mp3';
-  volume: number = 1.0;
-  autoStart: boolean = true;
-  // audioService: AudioFileService;
+export class AudioFileComponent implements OnInit, OnDestroy {
+  isPlaying = false;
+  currentTime = 0;
+  duration = 0;
+  volume = 1; // volume inicial (0–1)
+  audioService = inject(AudioFileService)
 
-  /**
-   *
-   */
-  constructor(private readonly audioService: AudioFileService) {}
+  private timeUpdateHandler = () => {
+    this.currentTime = this.audioService.currentTime;
+  };
 
-  playAudio(): void {
-    this.audioService.playAudio(this.audioFilePath, true);
+
+  ngOnInit(): void {
+    this.audioService.on('loadedmetadata', () => {
+      this.duration = this.audioService.duration;
+    });
+
+    this.audioService.on('timeupdate', this.timeUpdateHandler);
   }
 
-  pauseAudio(): void {
-    this.audioService.pauseAudio();
+  ngOnDestroy(): void {
+    this.audioService.off('timeupdate', this.timeUpdateHandler);
   }
 
-  stopAudio(): void {
-    this.audioService.stopAudio();
-  }
-
-  setVolume(event: Event): void {
+  changeVolume(event: Event) {
     const input = event.target as HTMLInputElement;
-    this.volume = parseFloat(input.value);
+    this.volume = +input.value;
     this.audioService.setVolume(this.volume);
+  }
+
+  togglePlay() {
+    if (this.isPlaying) {
+      this.audioService.pause();
+    } else {
+      this.audioService.play();
+    }
+    this.isPlaying = !this.isPlaying;
+  }
+
+  seek(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.audioService.seek(+input.value);
+  }
+
+  formatTime(sec: number): string {
+    const m = Math.floor(sec / 60) || 0;
+    const s = Math.floor(sec % 60) || 0;
+    return `${m}:${s.toString().padStart(2, '0')}`;
   }
 }
