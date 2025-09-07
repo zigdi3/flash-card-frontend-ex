@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { catchError, finalize, Observable, tap, throwError } from 'rxjs';
+import { catchError, EMPTY, finalize, Observable, tap } from 'rxjs';
 import { APP_CONFIG } from 'src/app/app.config';
 import { CardProfile } from '@app/features/pages/card-register/model/card-profile.model';
 @Injectable({
@@ -13,18 +13,28 @@ export class CardService {
   public readonly cards = this._cards.asReadonly();
   private _isLoading = signal<boolean>(false);
   public readonly isLoading = this._isLoading.asReadonly();
+  private _error = signal(false);
+  public readonly error = this._error.asReadonly();
+
+  handleError = (err: HttpErrorResponse) => {
+    console.log(err);
+    this._error.set(true);
+    return EMPTY;
+  };
 
   list(): Observable<CardProfile[]> {
     this._isLoading.set(true);
+    this._error.set(false);
     return this.http.get<CardProfile[]>(this.url + `/v1/flash-card/list`).pipe(
       tap((res) => this._cards.set(res)),
-      catchError(throwError), //tratamento de erro aq
+      catchError(this.handleError), //tratamento de erro aq
       finalize(() => this._isLoading.set(false))
     );
   }
 
   save(input: CardProfile): Observable<any> {
     this._isLoading.set(true);
+    this._error.set(false);
     return this.http
       .post<CardProfile>(this.url + `/v1/flash-card/save`, input)
       .pipe(
@@ -35,7 +45,7 @@ export class CardService {
             return [...current, input]; //res.card ao inves de input
           });
         }), // o servidor tem que retornar o card feito para funcionar, vou deixar o input temporariamente
-        catchError(throwError),
+        catchError(this.handleError),
         finalize(() => this._isLoading.set(false))
       );
   }

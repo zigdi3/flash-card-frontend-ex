@@ -5,7 +5,6 @@ import { AudioFileComponent } from '../audio-file/audio-file.component';
   selector: 'app-header',
   imports: [AudioFileComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
 })
 export class HeaderComponent {
   coffee() {

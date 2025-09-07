@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { AudioFileService } from './audio-file.service';
-import { ZardButtonComponent } from '@app/shared/components/button/button.component';
 
 @Component({
   selector: 'app-audio-file',
-  imports: [ZardButtonComponent],
+  imports: [],
   templateUrl: './audio-file.component.html',
 })
 export class AudioFileComponent implements OnInit, OnDestroy {
@@ -12,12 +11,12 @@ export class AudioFileComponent implements OnInit, OnDestroy {
   currentTime = 0;
   duration = 0;
   volume = 1;
-  audioService = inject(AudioFileService)
+  audioService = inject(AudioFileService);
+  isMute = this.audioService.isMute;
 
   private timeUpdateHandler = () => {
     this.currentTime = this.audioService.currentTime;
   };
-
 
   ngOnInit(): void {
     this.audioService.on('loadedmetadata', () => {
@@ -49,6 +48,16 @@ export class AudioFileComponent implements OnInit, OnDestroy {
   seek(event: Event) {
     const input = event.target as HTMLInputElement;
     this.audioService.seek(+input.value);
+  }
+
+  toggleMute() {
+    this.audioService.toggleMute(); // atualiza audio e volState no service
+    this.volume = this.audioService.audio?.volume || 0; // sincroniza o slider
+  }
+
+  stop() {
+    this.audioService.stop();
+    this.isPlaying = false;
   }
 
   formatTime(sec: number): string {

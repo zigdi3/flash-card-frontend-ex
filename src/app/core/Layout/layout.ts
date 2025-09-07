@@ -9,7 +9,7 @@ import { BackgroundComponent } from './components/background/background.componen
   imports: [HeaderComponent, BackgroundComponent, RouterOutlet],
   template: `<app-header />
     <app-background />
-    <main class="z-10">
+    <main>
       <router-outlet />
     </main>`,
 })

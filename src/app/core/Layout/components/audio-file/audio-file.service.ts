@@ -1,12 +1,13 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AudioFileService {
   private isBrowser: boolean;
-  private audio?: HTMLAudioElement;
+  audio?: HTMLAudioElement;
+  isMute = signal(false);
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -14,6 +15,8 @@ export class AudioFileService {
       this.audio = new Audio('assets/audio.mp3');
     }
   }
+
+  volState = 0;
 
   play(): void {
     this.audio?.play();
@@ -31,10 +34,27 @@ export class AudioFileService {
 
   setVolume(volume: number): void {
     if (this.audio) {
+      if (this.isMute() && this.audio.volume > 0) {
+        this.isMute.set(false);
+      }
       this.audio.volume = volume;
     }
   }
 
+
+
+  toggleMute() {
+    if (!this.audio) return;
+
+    if (this.isMute()) {
+      this.audio.volume = this.volState;
+      this.isMute.set(false);
+    } else {
+      this.volState = this.audio.volume;
+      this.audio.volume = 0;
+      this.isMute.set(true);
+    }
+  }
   seek(seconds: number): void {
     if (this.audio) {
       this.audio.currentTime = seconds;
