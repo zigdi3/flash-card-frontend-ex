@@ -1,49 +1,16 @@
 import { Component } from '@angular/core';
-import { AudioFileComponent } from '@app/core/Layout/components/audio-file/audio-file.component';
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
+import { BackgroundComponent } from './components/background/background.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [AudioFileComponent, RouterOutlet],
-  templateUrl: './layout.html',
-  styles: [
-    `
-      .audio-container {
-        position: sticky;
-        inset: 0px;
-        z-index: 1000;
-        display: flex;
-        background: rgba(0, 0, 130, 0.5);
-      }
-
-      .text-running {
-        display: inline-block;
-        position: relative;
-        white-space: nowrap;
-        animation: moveText 12s linear infinite;
-      }
-
-      .text-styled:hover {
-        color: gold;
-        cursor: pointer;
-      }
-      @keyframes moveText {
-        0% {
-          transform: translateX(100%);
-        }
-
-        100% {
-          transform: translateX(-75%);
-        }
-      }
-    `,
-  ],
+  imports: [HeaderComponent, BackgroundComponent, RouterOutlet],
+  template: `<app-header />
+    <app-background />
+    <main class="z-10">
+      <router-outlet />
+    </main>`,
 })
-export class Layout {
-  title = 'flash-card-frontend';
-
-  coffee() {
-    window.open('https://ko-fi.com/kakarotto70', '_blank');
-  }
-}
+export class Layout {}

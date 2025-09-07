@@ -1,0 +1,22 @@
+<article class="card">
+  <h2 class="card-title">
+    {{ card.name }}
+  </h2>
+
+  <p class="text-center">
+    GitHub:
+    <a class="link" [href]="card.gitHubUrl" target="_blank" rel="noopener">
+      {{ card.gitHubUrl }}
+    </a>
+  </p>
+
+  <p class="text-center">
+    LinkedIn:
+    <a class="link" [href]="card.linkedlnUrl" target="_blank" rel="noopener">
+      {{ card.linkedlnUrl }}
+    </a>
+  </p>
+
+  <app-safe-qrcode [value]="card.linkedlnUrl.toString()"/>
+ 
+</article>

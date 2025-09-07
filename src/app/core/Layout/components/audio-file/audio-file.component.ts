@@ -1,16 +1,17 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { AudioFileService } from './audio-file.service';
+import { ZardButtonComponent } from '@app/shared/components/button/button.component';
 
 @Component({
   selector: 'app-audio-file',
-  imports: [],
+  imports: [ZardButtonComponent],
   templateUrl: './audio-file.component.html',
 })
 export class AudioFileComponent implements OnInit, OnDestroy {
   isPlaying = false;
   currentTime = 0;
   duration = 0;
-  volume = 1; // volume inicial (0–1)
+  volume = 1;
   audioService = inject(AudioFileService)
 
   private timeUpdateHandler = () => {

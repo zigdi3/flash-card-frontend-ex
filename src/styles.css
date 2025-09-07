@@ -81,3 +81,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+.card {
+  @apply bg-white rounded-lg shadow-md p-6 flex flex-col gap-3 mb-2;
+}
+
+.card-title {
+  @apply text-xl font-bold text-gray-800 text-center;
+}
+
+.link {
+  @apply text-blue-600 underline break-words;
+}
+
+.empty-state {
+  @apply w-full max-w-2xl grid gap-2 p-12 bg-gray-50 rounded-2xl border border-dashed border-gray-300 text-center;
+}

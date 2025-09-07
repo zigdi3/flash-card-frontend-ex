@@ -10,7 +10,6 @@ import { ZardButtonComponent } from '@app/shared/components/button/button.compon
 
 @Component({
   selector: 'app-card-register',
-  standalone: true,
   templateUrl: './card-register.component.html',
   imports: [
     ZardFormFieldComponent,

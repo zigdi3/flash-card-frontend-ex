@@ -1,62 +1,94 @@
-import { Component, effect, signal } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { debounceTime } from 'rxjs';
+import { Component, inject, signal } from '@angular/core';
 import { CardProfile } from '../card-register/model/card-profile.model';
 import { CardService } from '../../../core/services/card.service';
 import { CommonModule } from '@angular/common';
-import { QrCodeComponent } from 'ng-qrcode';
 import { ZardButtonComponent } from '@app/shared/components/button/button.component';
 import { Router } from '@angular/router';
+import { Loading } from '@app/shared/components/loading/loading.component';
+import { CardComponent } from './components/card/card.component';
+import { NoContentComponent } from './components/no-content/no-content.component';
 
 @Component({
   selector: 'app-card-view',
   standalone: true,
-  imports: [QrCodeComponent, CommonModule, ZardButtonComponent],
+  imports: [
+    CommonModule,
+    ZardButtonComponent,
+    Loading,
+    CardComponent,
+    NoContentComponent,
+  ],
   templateUrl: './card-view.component.html',
 })
 export class CardViewComponent {
-  public cardList = signal<CardProfile[]>([]);
-  public isLoading = signal(false);
+  private cardService = inject(CardService);
+  private router = inject(Router);
 
-  constructor(
-    private cardService: CardService,
-    private route: Router,
-    private sanitizer: DomSanitizer
-  ) // private themeService: ThemeService
-  {
-    // this.themeService.themeChange.subscribe({
-    //   next: (theme: string) => {
-    //     console.log("listen themes from app...");
-    //   }
-    // });
-    this.setupEffects();
+  public readonly isLoading = this.cardService.isLoading;
+  public readonly cards = this.cardService.cards;
+
+  public cardList = signal<CardProfile[]>([
+    {
+      name: 'Alice Johnson',
+      gitHubUrl: 'https://github.com/alicejohnson',
+      linkedlnUrl: 'https://linkedin.com/in/alicejohnson',
+    },
+    {
+      name: 'Bruno Souza',
+      gitHubUrl: 'https://github.com/brunosouza',
+      linkedlnUrl: 'https://linkedin.com/in/brunosouza',
+    },
+    {
+      name: 'Carla Mendes',
+      gitHubUrl: 'https://github.com/carlamendes',
+      linkedlnUrl: 'https://linkedin.com/in/carlamendes',
+    },
+    {
+      name: 'Diego Ramos',
+      gitHubUrl: 'https://github.com/diegoramos',
+      linkedlnUrl: 'https://linkedin.com/in/diegoramos',
+    },
+    {
+      name: 'Elisa Martins',
+      gitHubUrl: 'https://github.com/elisamartins',
+      linkedlnUrl: 'https://linkedin.com/in/elisamartins',
+    },
+    {
+      name: 'Felipe Rocha',
+      gitHubUrl: 'https://github.com/feliperocha',
+      linkedlnUrl: 'https://linkedin.com/in/feliperocha',
+    },
+    {
+      name: 'Gabriela Costa',
+      gitHubUrl: 'https://github.com/gabrielacosta',
+      linkedlnUrl: 'https://linkedin.com/in/gabrielacosta',
+    },
+    {
+      name: 'Henrique Oliveira',
+      gitHubUrl: 'https://github.com/henriqueoliveira',
+      linkedlnUrl: 'https://linkedin.com/in/henriqueoliveira',
+    },
+    {
+      name: 'Isabela Ferreira',
+      gitHubUrl: 'https://github.com/isabelaferreira',
+      linkedlnUrl: 'https://linkedin.com/in/isabelaferreira',
+    },
+    {
+      name: 'João Pereira',
+      gitHubUrl: 'https://github.com/joaopereira',
+      linkedlnUrl: 'https://linkedin.com/in/joaopereira',
+    },
+  ]);
+
+  ngOnInit() {
+    // this.loadCards();
   }
 
   loadCards() {
-    const cards$ = this.cardService.list().pipe(debounceTime(4000));
-
-    cards$.subscribe({
-      next: (cards: { data: CardProfile[] }) => {
-        if (Array.isArray(cards.data)) {
-          this.cardList.set(cards.data);
-        } else {
-          console.error('Expected an array but got:', cards);
-        }
-      },
-      error: () => console.log('Erro ao listar cards'),
-      complete: () => this.isLoading.set(false),
-    });
-  }
-
-  private setupEffects() {
-    effect(() => this.loadCards());
+    this.cardService.list().subscribe();
   }
 
   goToRegisterCard(): void {
-    this.route.navigate(['card-register']);
-  }
-
-  cleanURL(oldURL: string): SafeUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(oldURL);
+    this.router.navigate(['card-register']);
   }
 }

@@ -1,12 +1,10 @@
 <div class="w-72 p-3 rounded-2xl bg-gray-800 text-white flex items-center space-x-3 shadow-lg">
-  <!-- Botão Play/Pause -->
-  <button 
+  <z-button 
     (click)="togglePlay()" 
     class="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
     {{ isPlaying ? '⏸' : '▶' }}
-  </button>
+  </z-button>
 
-  <!-- Barra de progresso -->
   <div class="flex-1">
     <input 
       type="range" 
@@ -17,7 +15,6 @@
       class="w-full accent-accent" 
     />
 
-     <!-- Controle de Volume -->
   <div class="flex items-center space-x-2 w-20">
     <span class="text-xs">🔊</span>
     <input 
