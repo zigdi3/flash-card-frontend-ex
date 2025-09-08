@@ -1,33 +1,92 @@
-<section class="mx-auto w-max p-6 rounded-lg shadow-md z-10 mt-4
-                bg-white/10 backdrop-blur-md border border-white/40">
-  <h2 class="text-center mx-auto my-1 z-10 text-gray-800 font-semibold">Create Card</h2>
-  
-  <form [formGroup]="cardRegisterForm"
-        (ngSubmit)="saveCard()"
-        class="space-y-4 w-105 z-50">
-    
+<section
+  class="mx-auto w-max p-6 rounded-lg shadow-md z-10 mt-4 bg-white/10 backdrop-blur-md border border-white/40"
+>
+  <h2 class="text-center mx-auto my-1 z-10 text-gray-800 font-semibold">
+    Create Card
+  </h2>
+
+  <form
+    [formGroup]="cardRegisterForm"
+    (ngSubmit)="saveCard()"
+    class="space-y-4 w-105 z-50"
+  >
     <z-form-field label="Name">
-      <input z-input type="text"
-             formControlName="nameControl"
-             class="w-full bg-white/50 backdrop-blur-sm"
-             placeholder="Digite seu nome"/>
+      <input
+        z-input
+        type="text"
+        formControlName="nameControl"
+        class="w-full bg-white/50 backdrop-blur-sm"
+        placeholder="Digite seu nome"
+        #name
+      />
+      @if(isInvalid('nameControl')()){
+      <small>Name must have at least 3 characters</small>
+      }
     </z-form-field>
 
     <z-form-field label="GitHub Link">
-      <input z-input type="url"
-             formControlName="githubControl"
-             class="w-full bg-white/50 backdrop-blur-sm"
-             placeholder="https://github.com/usuario"/>
+      <input
+        z-input
+        type="url"
+        formControlName="githubControl"
+        class="w-full bg-white/50 backdrop-blur-sm"
+        placeholder="https://github.com/usuario"
+      />
+      @if(isInvalid('githubControl')()){
+      <small>Github link must point to a valid Github profile</small>
+      }
     </z-form-field>
 
     <z-form-field label="LinkedIn Link">
-      <input z-input type="url"
-             formControlName="linkedinControl"
-             class="w-full bg-white/50 backdrop-blur-sm"
-             placeholder="https://linkedin.com/in/usuario"/>
+      <input
+        z-input
+        type="url"
+        formControlName="linkedinControl"
+        class="w-full bg-white/50 backdrop-blur-sm"
+        placeholder="https://linkedin.com/in/usuario"
+      />
+      @if(isInvalid('linkedinControl')()){
+      <small>LinkedIn link must point to a valid LinkedIn profile</small>
+      }
     </z-form-field>
 
-    <z-button type="submit" variant="primary" class="w-full">Salvar</z-button>
+    <z-form-field label="Whatsapp Number">
+      <input
+        z-input
+        type="tel"
+        formControlName="whatsappControl"
+        class="w-full bg-white/50 backdrop-blur-sm"
+        placeholder="+55 12 34567-8910"
+        #whatsapp
+      />
+      @if(isInvalid('whatsappControl')()){
+      <small>Whatsapp number must be a valid phone number</small>
+       }
+    </z-form-field>
+
+    <z-form-field label="E-mail">
+      <input
+        z-input
+        type="email"
+        formControlName="emailControl"
+        class="w-full bg-white/50 backdrop-blur-sm"
+        placeholder="mail@example.com"
+      />
+      @if(isInvalid('emailControl')()){
+      <small>Email must be a valid email adress</small>
+      }
+    </z-form-field>
+
+    <button
+      z-button
+      zSize="lg"
+      [zLoading]="isLoading()"
+      type="submit"
+      variant="primary"
+      class="w-full"
+    >
+      Salvar
+    </button>
   </form>
 
   <div class="pt-3">
